@@ -1,0 +1,1130 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>COCO Massage, massages bien-être à Fribourg</title>
+<meta name="description" content="Massages bien-être classiques, énergétiques ou combinés à Fribourg, Route des Cliniques 26. Note Google 5,0 sur 40 avis. Sur rendez-vous.">
+<meta name="theme-color" content="#9B4A2C">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_CH">
+<meta property="og:title" content="COCO Massage, massages bien-être à Fribourg">
+<meta property="og:description" content="Massage classique, énergétique ou combiné, Route des Cliniques 26 à Fribourg. Note Google 5,0 sur 40 avis.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M6 64V32a26 26 0 0 1 52 0v32z' fill='%239B4A2C'/%3E%3Cpath d='M40 30a10 10 0 1 0 0 14' fill='none' stroke='%23FFF8F0' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HealthAndBeautyBusiness",
+  "name": "COCO Massage",
+  "description": "Massages bien-être à Fribourg : massage classique, énergétique ou combiné.",
+  "telephone": "+41796483539",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Route des Cliniques 26, rez-de-chaussée",
+    "postalCode": "1700",
+    "addressLocality": "Fribourg",
+    "addressCountry": "CH"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 46.7938282, "longitude": 7.1502926 },
+  "hasMap": "https://www.google.com/maps/place/?q=place_id:ChIJOVurehdpjkcRhH8O_a4ZVtM",
+  "paymentAccepted": "Cash",
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "09:00", "closes": "17:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday"], "opens": "09:30", "closes": "20:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday", "Friday"], "opens": "08:00", "closes": "20:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "15:00" }
+  ]
+}
+</script>
+<style>
+/* ==========================================================================
+   COCO Massage — design decisions
+   Palette  Taken from the photos: linen walls and macramé (bg #F6EFE6, sand
+            surface #EDE2D4), rolled towels and candle glow (terracotta brand
+            #9B4A2C), the fiddle-leaf fig and green shutters (sage accent
+            #4F5B45), dark cocoa ink #2B1E18. Warm and quiet: no gradients,
+            no glow. Terracotta is the one strong colour move (booking).
+   Type     Instrument Serif (400 + italic) for a soft editorial voice at
+            large sizes; Hanken Grotesk 400/600 for calm, legible text.
+   Hero     Split editorial: oversized serif promise on linen, the candle-lit
+            room in an arch frame (the arch repeats the cabinet's arched
+            door) with a slow Ken Burns. Live "open now" badge under the CTA.
+   Rhythm   linen hero → sand reviews (oversized 5,0 + swipeable rail) →
+            linen soins as an editorial list + practitioners → asymmetric
+            gallery with lightbox → sand hours/map → terracotta booking field
+            with a macramé lattice drawn in SVG → cocoa footer.
+   ========================================================================== */
+:root {
+  --bg: #F6EFE6;
+  --surface: #EDE2D4;
+  --ink: #2B1E18;
+  --ink-soft: #6B5547;
+  --brand: #9B4A2C;
+  --brand-deep: #84401F;
+  --brand-ink: #FFF8F0;
+  --accent: #4F5B45;
+  --line: #DCCAB7;
+  --glow: #E8A27E;
+
+  --font-display: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --step--1: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.15rem, 1.06rem + 0.45vw, 1.45rem);
+  --step-2: clamp(1.45rem, 1.25rem + 0.9vw, 2.1rem);
+  --step-3: clamp(1.9rem, 1.55rem + 1.7vw, 3.1rem);
+  --step-4: clamp(2.4rem, 1.8rem + 3vw, 4.6rem);
+  --step-5: clamp(2.9rem, 1.9rem + 4.8vw, 6.5rem);
+
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 24px;
+  --space-6: 32px; --space-7: 48px; --space-8: 64px; --space-9: 96px;
+  --section: clamp(56px, 10vw, 128px);
+  --gutter: clamp(16px, 5vw, 40px);
+  --max: 1200px;
+  --header-h: 64px;
+
+  --r-sm: 10px; --r-md: 22px; --r-pill: 999px;
+  --shadow-1: 0 1px 2px rgb(43 30 24 / .06), 0 3px 10px rgb(43 30 24 / .05);
+  --shadow-2: 0 2px 4px rgb(43 30 24 / .05), 0 16px 36px -10px rgb(43 30 24 / .22);
+  --shadow-3: 0 4px 10px rgb(43 30 24 / .06), 0 34px 70px -24px rgb(43 30 24 / .45);
+
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+@media (min-width: 960px) { :root { --header-h: 76px; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html.lock { overflow: hidden; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 400 var(--step-0)/1.6 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: calc(60px + env(safe-area-inset-bottom));
+}
+@media (min-width: 768px) { body { padding-bottom: 0; } }
+img { display: block; max-width: 100%; height: auto; }
+h1, h2, h3 {
+  margin: 0; font-family: var(--font-display); font-weight: 400;
+  line-height: 1.05; letter-spacing: -0.015em; text-wrap: balance;
+}
+h1 em, h2 em, h3 em { font-style: italic; }
+p { margin: 0; text-wrap: pretty; }
+a { color: inherit; }
+address { font-style: normal; }
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 6px; }
+section[id] { scroll-margin-top: var(--header-h); }
+.wrap { width: min(100% - 2 * var(--gutter), var(--max)); margin-inline: auto; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.skip {
+  position: absolute; left: var(--space-4); top: var(--space-2); z-index: 100;
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--space-4);
+  background: var(--ink); color: var(--bg); border-radius: var(--r-pill);
+  font-weight: 600; text-decoration: none; transform: translateY(-160%);
+}
+.skip:focus { transform: none; }
+
+/* Icons */
+.ico { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor;
+  stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.ico--fill { fill: currentColor; stroke: none; }
+.stars { display: inline-flex; gap: 2px; color: var(--brand); }
+.stars .ico { width: 16px; height: 16px; }
+
+/* Eyebrow */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: var(--space-3);
+  font-size: var(--step--1); font-weight: 600; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--brand);
+}
+.eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 52px; padding: 0 22px; border-radius: var(--r-pill);
+  font: 600 var(--step-0)/1.1 var(--font-body); text-decoration: none; white-space: nowrap;
+  border: 1.5px solid transparent; cursor: pointer;
+  transition: transform .3s var(--ease);
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+.btn--brand { background: var(--brand); color: var(--brand-ink); box-shadow: var(--shadow-1); }
+.btn--brand:hover { background: var(--brand-deep); }
+.btn--ghost { border-color: var(--ink); color: var(--ink); }
+.btn--ghost:hover { background: var(--ink); color: var(--bg); }
+.btn--light { background: var(--brand-ink); color: var(--brand); }
+.btn--outline-light { border-color: rgb(255 248 240 / .7); color: var(--brand-ink); }
+.btn--outline-light:hover { background: var(--brand-ink); color: var(--brand); }
+
+.link-arrow {
+  display: inline-flex; align-items: center; gap: var(--space-2); min-height: 44px;
+  font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px;
+  text-underline-offset: 5px; color: var(--ink);
+}
+.link-arrow .ico { width: 18px; height: 18px; transition: transform .3s var(--ease); }
+.link-arrow:hover .ico { transform: translate(2px, -2px); }
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 60; background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.header__bar { display: flex; align-items: center; gap: var(--space-5); height: var(--header-h); }
+.wordmark {
+  display: inline-flex; align-items: baseline; gap: 7px; min-height: 44px; padding-top: 10px;
+  text-decoration: none; color: var(--ink); margin-right: auto;
+}
+.wordmark__coco { font: 400 1.75rem/1 var(--font-display); letter-spacing: .07em; }
+.wordmark__sub { font: italic 400 1.45rem/1 var(--font-display); color: var(--brand); }
+.nav { display: none; }
+.header__call { display: none; min-height: 46px; padding: 0 18px; font-size: 1rem; }
+.header__call .ico { width: 18px; height: 18px; }
+.menu-btn {
+  display: inline-grid; place-items: center; width: 48px; height: 48px; margin-right: -8px;
+  border: 0; background: none; color: var(--ink); cursor: pointer; border-radius: 50%;
+}
+.menu-btn__lines { position: relative; width: 24px; height: 12px; }
+.menu-btn__lines::before, .menu-btn__lines::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 1.75px; border-radius: 2px;
+  background: currentColor; transition: transform .35s var(--ease);
+}
+.menu-btn__lines::before { top: 0; }
+.menu-btn__lines::after { bottom: 0; }
+.menu-btn[aria-expanded="true"] .menu-btn__lines::before { transform: translateY(5.1px) rotate(45deg); }
+.menu-btn[aria-expanded="true"] .menu-btn__lines::after { transform: translateY(-5.1px) rotate(-45deg); }
+
+@media (min-width: 640px) { .header__call { display: inline-flex; } }
+@media (min-width: 960px) {
+  .menu-btn { display: none; }
+  .nav { display: flex; gap: var(--space-2); }
+  .nav a {
+    display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--space-3);
+    text-decoration: none; font-weight: 600; font-size: .975rem; color: var(--ink-soft);
+  }
+  .nav a:hover { color: var(--ink); }
+}
+
+/* Mobile menu */
+.menu {
+  position: fixed; inset: var(--header-h) 0 0 0; z-index: 55; background: var(--bg);
+  padding: var(--space-5) var(--gutter) calc(var(--space-6) + env(safe-area-inset-bottom));
+  display: flex; flex-direction: column; gap: var(--space-6); overflow-y: auto;
+  opacity: 0; visibility: hidden; transform: translateY(-10px);
+  transition: opacity .35s var(--ease), transform .35s var(--ease), visibility 0s linear .35s;
+}
+.menu.is-open { opacity: 1; visibility: visible; transform: none; transition: opacity .35s var(--ease), transform .35s var(--ease); }
+.menu__links { list-style: none; margin: 0; padding: 0; }
+.menu__links a {
+  display: flex; align-items: center; justify-content: space-between; min-height: 64px;
+  border-bottom: 1px solid var(--line); text-decoration: none;
+  font: 400 var(--step-3)/1.1 var(--font-display);
+}
+.menu__links a span { font: 600 var(--step--1)/1 var(--font-body); color: var(--ink-soft); letter-spacing: .1em; }
+.menu__actions { display: grid; gap: var(--space-3); }
+.menu__actions .btn { width: 100%; }
+@media (min-width: 960px) { .menu { display: none; } }
+
+/* ---------- Status badge ---------- */
+.status {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 32px;
+  font-weight: 600; font-size: var(--step--1); color: var(--ink);
+}
+.status[hidden] { display: none; }
+.status__dot { position: relative; width: 10px; height: 10px; border-radius: 50%; background: #9C8B7E; flex: none; }
+.status[data-state="open"] .status__dot,
+.status[data-state="soon"] .status__dot { background: #3F7A4A; }
+.status[data-state="soon"] .status__dot { background: #B5791E; }
+.status[data-state="open"] .status__dot::after {
+  content: ""; position: absolute; inset: -4px; border-radius: 50%;
+  border: 1.5px solid #3F7A4A; animation: pulse 2.4s var(--ease) infinite;
+}
+@keyframes pulse { from { transform: scale(.6); opacity: 1; } to { transform: scale(1.5); opacity: 0; } }
+
+/* ---------- Hero ---------- */
+.hero { padding: var(--space-6) 0 var(--section); }
+.hero__grid { display: grid; gap: var(--space-7); }
+.hero h1 { margin-top: var(--space-4); font-size: var(--step-5); line-height: 1; letter-spacing: -0.025em; }
+.hero h1 em { display: block; color: var(--brand); }
+.hero__lede { margin-top: var(--space-4); max-width: 36ch; color: var(--ink-soft); font-size: clamp(1rem, .92rem + .45vw, 1.3rem); }
+.chip {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-top: var(--space-5);
+  padding: 0 18px 0 14px; border-radius: var(--r-pill); background: var(--surface);
+  text-decoration: none; font-size: var(--step--1); color: var(--ink);
+  transition: transform .3s var(--ease);
+}
+.chip:hover { transform: translateY(-2px); }
+.chip strong { font-weight: 600; }
+.chip .stars .ico { width: 14px; height: 14px; }
+.hero__cta { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-5); }
+.hero__cta .btn { flex: 1 1 auto; }
+.hero .status { margin-top: var(--space-4); }
+.hero__media { margin: 0; position: relative; width: 92%; margin-left: auto; }
+.arch {
+  aspect-ratio: 4 / 5; overflow: hidden; isolation: isolate; background: var(--surface);
+  border-radius: 50% 50% var(--r-md) var(--r-md) / 40% 40% var(--r-md) var(--r-md);
+  box-shadow: var(--shadow-3);
+}
+.arch img {
+  width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%;
+  transform-origin: 50% 62%; animation: kenburns 28s var(--ease) infinite alternate;
+}
+@keyframes kenburns { from { transform: scale(1.02); } to { transform: scale(1.13); } }
+.hero__media figcaption {
+  margin-top: var(--space-3); font: italic 400 var(--step-0)/1.3 var(--font-display);
+  color: var(--ink-soft); text-align: right;
+}
+@media (min-width: 640px) {
+  .hero__cta .btn { flex: 0 0 auto; }
+}
+@media (min-width: 960px) {
+  .hero { padding-top: var(--space-8); }
+  .hero__grid { grid-template-columns: 1.3fr .9fr; column-gap: var(--space-8); align-items: center; }
+  .hero__media { width: 100%; max-width: 460px; justify-self: end; }
+}
+
+/* ---------- Sections ---------- */
+.section { padding-block: var(--section); }
+.section--sand { background: var(--surface); }
+.section--flush { padding-top: 0; }
+q { quotes: "\00AB\00A0" "\00A0\00BB" "\201C" "\201D"; }
+.section h2 { font-size: var(--step-4); }
+.section__lede { color: var(--ink-soft); max-width: 60ch; }
+
+/* ---------- Avis ---------- */
+.avis__grid { display: grid; gap: var(--space-7); grid-template-areas: "intro" "score" "featured"; }
+.avis__intro { grid-area: intro; }
+.score { grid-area: score; }
+.featured { grid-area: featured; }
+.avis__intro h2 { margin-top: var(--space-4); }
+.avis__intro .section__lede { margin-top: var(--space-4); }
+.score { display: grid; grid-template-columns: auto 1fr; column-gap: var(--space-5); align-items: end; }
+.score__num {
+  grid-row: span 3; font: 400 clamp(7rem, 4rem + 14vw, 15rem)/.78 var(--font-display);
+  letter-spacing: -0.04em; color: var(--brand);
+}
+.score .stars .ico { width: 20px; height: 20px; }
+.score__label { margin-top: var(--space-2); color: var(--ink-soft); line-height: 1.35; }
+.score__label strong { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+.score .link-arrow { grid-column: 1 / -1; margin-top: var(--space-4); justify-self: start; }
+.featured { margin: 0; padding-top: var(--space-6); border-top: 1px solid var(--line); }
+.featured blockquote { margin: 0; }
+.featured blockquote p {
+  font: italic 400 var(--step-3)/1.12 var(--font-display); letter-spacing: -0.01em; text-wrap: balance;
+}
+.featured figcaption { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-top: var(--space-5); color: var(--ink-soft); }
+.featured figcaption strong { color: var(--ink); font-weight: 600; }
+@media (min-width: 960px) {
+  .avis__grid {
+    grid-template-columns: 4fr 7fr; grid-template-areas: "score intro" "score featured";
+    column-gap: var(--space-9); row-gap: var(--space-7);
+  }
+  .score { grid-template-columns: 1fr; align-self: start; position: sticky; top: calc(var(--header-h) + var(--space-6)); }
+  .score__num { grid-row: auto; margin: -0.04em 0 .16em -0.05em; }
+  .score .link-arrow { margin-top: var(--space-2); }
+}
+
+.rail-wrap { margin-top: var(--space-8); }
+.rail {
+  display: grid; grid-auto-flow: column; grid-auto-columns: min(86%, 390px); gap: var(--space-4);
+  overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+  margin-inline: calc(-1 * var(--gutter)); padding: var(--space-2) var(--gutter) var(--space-5);
+  scroll-padding-inline: var(--gutter); scrollbar-width: none; list-style: none;
+}
+.rail::-webkit-scrollbar { display: none; }
+.rail > li { display: flex; }
+.card {
+  scroll-snap-align: start; display: flex; width: 100%; flex-direction: column; gap: var(--space-4);
+  background: var(--bg); border-radius: var(--r-md); padding: var(--space-6) var(--space-5);
+  box-shadow: var(--shadow-1); margin: 0;
+}
+.card blockquote { margin: 0; flex: 1; }
+.card blockquote p { line-height: 1.6; }
+.card figcaption { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-3); padding-top: var(--space-4); border-top: 1px solid var(--line); }
+.card figcaption strong { font-weight: 600; }
+.card figcaption span { color: var(--ink-soft); font-size: var(--step--1); }
+.rail__foot { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); margin-top: var(--space-3); }
+.rail__hint { color: var(--ink-soft); font-size: var(--step--1); }
+.rail__nav { display: none; gap: var(--space-2); }
+.rail__nav button {
+  display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%;
+  border: 1.5px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer;
+  transition: transform .3s var(--ease);
+}
+.rail__nav button:hover { transform: scale(1.06); }
+@media (min-width: 768px) { .rail__nav { display: flex; } .rail__hint { display: none; } }
+
+/* ---------- Soins ---------- */
+.soins__head { display: grid; gap: var(--space-5); }
+.soins__head h2 { margin-top: var(--space-4); }
+@media (min-width: 960px) {
+  .soins__head { grid-template-columns: 6fr 5fr; column-gap: var(--space-9); align-items: end; }
+}
+.services { list-style: none; margin: var(--space-7) 0 0; padding: 0; border-top: 1px solid var(--ink); }
+.service { display: grid; grid-template-columns: auto 1fr; column-gap: var(--space-4); row-gap: var(--space-3); padding-block: var(--space-6); border-bottom: 1px solid var(--line); }
+.service__num { font: italic 400 var(--step-2)/1 var(--font-display); color: var(--brand); padding-top: .35em; }
+.service h3 { font-size: var(--step-3); }
+.service p { grid-column: 1 / -1; color: var(--ink-soft); max-width: 60ch; }
+.service .service__quote { font: italic 400 var(--step-1)/1.35 var(--font-display); color: var(--accent); }
+.service__quote span { font: 400 var(--step--1)/1 var(--font-body); color: var(--ink-soft); font-style: normal; white-space: nowrap; }
+@media (min-width: 960px) {
+  .service { grid-template-columns: 72px 4fr 6fr; column-gap: var(--space-6); align-items: baseline; padding-block: var(--space-7); }
+  .service__num { grid-row: 1 / 3; }
+  .service h3 { grid-row: 1 / 3; }
+  .service p { grid-column: 3; }
+}
+.services__note { margin-top: var(--space-5); color: var(--ink-soft); }
+.services__note a { font-weight: 600; color: var(--ink); text-underline-offset: 4px; }
+
+.team { display: grid; gap: var(--space-7); margin-top: var(--section); }
+.team__photo { margin: 0; aspect-ratio: 4 / 5; border-radius: var(--r-md); overflow: hidden; box-shadow: var(--shadow-2); background: var(--surface); }
+.team__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; }
+.team__text h3 { margin-top: var(--space-4); font-size: var(--step-4); }
+.team__text p:not(.eyebrow) { margin-top: var(--space-4); color: var(--ink-soft); max-width: 52ch; }
+.team__text q { color: var(--ink); }
+.team__text .btn { margin-top: var(--space-6); }
+@media (min-width: 960px) {
+  .team { grid-template-columns: 5fr 6fr; column-gap: var(--space-9); align-items: center; }
+}
+
+/* ---------- Le lieu / gallery ---------- */
+.lieu__head { display: grid; gap: var(--space-4); }
+.lieu__head h2 { margin-top: var(--space-4); }
+.lieu__head h2 span { display: block; font: 400 var(--step--1)/1.4 var(--font-body); letter-spacing: 0; color: var(--ink-soft); margin-top: var(--space-3); }
+@media (min-width: 960px) {
+  .lieu__head { grid-template-columns: 7fr 5fr; column-gap: var(--space-9); align-items: end; }
+}
+.gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-3); margin-top: var(--space-7); }
+.g-item {
+  position: relative; display: block; width: 100%; padding: 0; border: 0; margin: 0;
+  border-radius: var(--r-sm); overflow: hidden; cursor: zoom-in; background: var(--surface); color: var(--ink);
+}
+.g-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.g-item:hover img { transform: scale(1.04); }
+.g-item__zoom {
+  position: absolute; right: 10px; bottom: 10px; display: grid; place-items: center;
+  width: 36px; height: 36px; border-radius: 50%; background: rgb(246 239 230 / .9);
+}
+.g-item__zoom .ico { width: 16px; height: 16px; }
+.g1, .g2 { grid-column: 1 / -1; }
+.g1 { aspect-ratio: 4 / 5; }
+.g2 { aspect-ratio: 16 / 10; }
+.g3, .g4 { aspect-ratio: 1; }
+.g5, .g6 { aspect-ratio: 3 / 4; }
+@media (min-width: 640px) {
+  .gallery { grid-template-columns: repeat(6, 1fr); }
+  .g1 { grid-column: 1 / 4; grid-row: 1 / 3; aspect-ratio: auto; }
+  .g2 { grid-column: 4 / 7; aspect-ratio: 4 / 3; }
+  .g3 { grid-column: 4 / 7; aspect-ratio: 4 / 3; }
+  .g4 { grid-column: 1 / 3; }
+  .g5 { grid-column: 3 / 7; aspect-ratio: auto; }
+  .g6 { display: none; }
+}
+@media (min-width: 960px) {
+  .gallery { grid-template-columns: repeat(12, 1fr); grid-template-rows: 290px 290px 400px; gap: var(--space-4); }
+  .gallery .g-item { aspect-ratio: auto; }
+  .g1 { grid-column: 1 / 6; grid-row: 1 / 3; }
+  .g2 { grid-column: 6 / 13; grid-row: 1; }
+  .g3 { grid-column: 6 / 10; grid-row: 2; }
+  .g4 { grid-column: 10 / 13; grid-row: 2; }
+  .g5 { grid-column: 1 / 8; grid-row: 3; }
+  .g6 { display: block; grid-column: 8 / 13; grid-row: 3; }
+  .g6 img { object-position: 50% 70%; }
+}
+
+/* Lightbox */
+.lightbox {
+  width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; inset: 0;
+  padding: 0; border: 0; background: transparent; color: var(--brand-ink);
+}
+.lightbox::backdrop { background: rgb(27 18 14 / .94); }
+.lightbox[open] { display: grid; place-items: center; }
+.lightbox figure { margin: 0; display: grid; gap: var(--space-4); justify-items: center; padding: 72px var(--space-4) 104px; }
+.lightbox img { max-width: min(92vw, 1300px); max-height: 72vh; width: auto; height: auto; border-radius: var(--r-sm); }
+.lightbox figcaption { font: italic 400 var(--step-1)/1.3 var(--font-display); text-align: center; }
+.lb-btn {
+  position: fixed; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%;
+  border: 1px solid rgb(255 248 240 / .45); background: rgb(43 30 24 / .55); color: var(--brand-ink); cursor: pointer;
+}
+.lb-close { top: 16px; right: 16px; }
+.lb-prev { left: calc(50% - 64px); bottom: 28px; }
+.lb-next { right: calc(50% - 64px); bottom: 28px; }
+@media (min-width: 768px) {
+  .lightbox figure { padding: 72px 96px; }
+  .lb-prev { left: 24px; bottom: auto; top: 50%; transform: translateY(-50%); }
+  .lb-next { right: 24px; bottom: auto; top: 50%; transform: translateY(-50%); }
+}
+
+/* ---------- Horaires & accès ---------- */
+.visit { display: grid; gap: var(--space-7); }
+.visit h2 { margin-top: var(--space-4); font-size: var(--step-3); }
+.visit h2 em { color: var(--brand); }
+.visit__city { margin-top: var(--space-2); color: var(--ink-soft); }
+.hours { margin-top: var(--space-6); background: var(--bg); border-radius: var(--r-md); padding: var(--space-5); box-shadow: var(--shadow-1); }
+.hours__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2) var(--space-4); margin-bottom: var(--space-3); }
+.hours__head h3 { font-size: var(--step-2); }
+.hours table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.hours th, .hours td { padding: 11px var(--space-3); text-align: left; border-top: 1px solid var(--line); font-weight: 400; }
+.hours td { text-align: right; white-space: nowrap; }
+.hours tr:first-child th, .hours tr:first-child td { border-top: 0; }
+.hours tr.is-today th, .hours tr.is-today td { background: var(--surface); font-weight: 600; border-top-color: transparent; }
+.hours tr.is-today th { border-radius: var(--r-sm) 0 0 var(--r-sm); }
+.hours tr.is-today td { border-radius: 0 var(--r-sm) var(--r-sm) 0; }
+.hours tr.is-today + tr th, .hours tr.is-today + tr td { border-top-color: transparent; }
+.today-tag {
+  display: inline-block; margin-left: var(--space-2); padding: 2px 8px; border-radius: var(--r-pill);
+  background: var(--brand); color: var(--brand-ink); font-size: .75rem; font-weight: 600; letter-spacing: .04em; vertical-align: 2px;
+}
+.hours .is-closed td { color: var(--ink-soft); }
+.facts { list-style: none; margin: var(--space-5) 0 0; padding: 0; display: grid; gap: var(--space-3); }
+.facts li { display: flex; align-items: center; gap: var(--space-3); }
+.facts .ico { color: var(--accent); width: 22px; height: 22px; }
+.visit__cta { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6); }
+.map {
+  position: relative; aspect-ratio: 4 / 3; border-radius: var(--r-md); overflow: hidden;
+  background: var(--bg); box-shadow: var(--shadow-2);
+}
+.map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.map__ph {
+  position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: var(--space-3);
+  text-align: center; color: var(--ink-soft); font-size: var(--step--1);
+  background-color: var(--bg);
+  background-image: linear-gradient(rgb(220 202 183 / .55) 1px, transparent 1px), linear-gradient(90deg, rgb(220 202 183 / .55) 1px, transparent 1px);
+  background-size: 48px 48px; background-position: center;
+}
+.map__ph .ico { width: 36px; height: 36px; color: var(--brand); stroke-width: 1.5; }
+.map__ph span { background: var(--bg); padding: 2px 8px; border-radius: 6px; }
+.entrance { margin-top: var(--space-5); display: grid; grid-template-columns: 112px 1fr; gap: var(--space-5); align-items: end; }
+.entrance__img {
+  margin: 0; aspect-ratio: 3 / 4; overflow: hidden; background: var(--bg); box-shadow: var(--shadow-1);
+  border-radius: 50% 50% var(--r-sm) var(--r-sm) / 37.5% 37.5% var(--r-sm) var(--r-sm);
+}
+.entrance__img img { width: 100%; height: 100%; object-fit: cover; object-position: 40% 45%; }
+.entrance__cap { font: italic 400 var(--step-1)/1.3 var(--font-display); color: var(--ink); margin-bottom: var(--space-1); }
+@media (min-width: 960px) {
+  .visit { grid-template-columns: 5fr 7fr; column-gap: var(--space-9); align-items: start; }
+  .visit__map { position: sticky; top: calc(var(--header-h) + var(--space-6)); }
+  .map { aspect-ratio: 5 / 4; }
+  .entrance { grid-template-columns: 168px 1fr; }
+}
+
+/* ---------- Rendez-vous ---------- */
+.book { position: relative; overflow: hidden; background: var(--brand); color: var(--brand-ink); }
+.book::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='72' viewBox='0 0 56 72'%3E%3Cg fill='none' stroke='%23FFF8F0' stroke-width='1.2'%3E%3Cpath d='M28 4 52 36 28 68 4 36Z'/%3E%3Cpath d='M28 20 40 36 28 52 16 36Z'/%3E%3C/g%3E%3Ccircle cx='28' cy='36' r='2.4' fill='%23FFF8F0'/%3E%3Ccircle cx='28' cy='4' r='1.6' fill='%23FFF8F0'/%3E%3Ccircle cx='28' cy='68' r='1.6' fill='%23FFF8F0'/%3E%3C/svg%3E");
+  background-size: 56px 72px; opacity: .13;
+  -webkit-mask-image: linear-gradient(100deg, transparent 25%, #000 85%);
+  mask-image: linear-gradient(100deg, transparent 25%, #000 85%);
+}
+.book .wrap { position: relative; }
+.book__grid { display: grid; gap: var(--space-7); }
+.book .eyebrow { color: var(--brand-ink); }
+.book h2 { margin-top: var(--space-4); font-size: var(--step-4); }
+.book h2 em { color: #FCE3D3; }
+.book__text { margin-top: var(--space-5); max-width: 46ch; color: rgb(255 248 240 / .92); }
+.book__phone {
+  display: inline-flex; align-items: center; min-height: 48px; text-decoration: none;
+  font: 400 clamp(2.6rem, 1.8rem + 4.2vw, 5rem)/1 var(--font-display); letter-spacing: -0.01em;
+  white-space: nowrap; transition: transform .3s var(--ease);
+}
+.book__phone:hover { transform: translateX(4px); }
+.book__btns { display: grid; gap: var(--space-3); margin-top: var(--space-5); }
+@media (min-width: 480px) { .book__btns { display: flex; flex-wrap: wrap; } }
+.book__note { display: grid; gap: var(--space-2); margin-top: var(--space-6); padding-top: var(--space-5); border-top: 1px solid rgb(255 248 240 / .3); font-size: var(--step--1); }
+.book__note p { display: flex; align-items: center; gap: var(--space-3); }
+.book__note .ico { width: 18px; height: 18px; }
+@media (min-width: 960px) {
+  .book__grid { grid-template-columns: 6fr 5fr; column-gap: var(--space-9); align-items: end; }
+}
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--ink); color: #E9DDD0; padding: var(--space-8) 0 var(--space-6); }
+.site-footer .wordmark { color: var(--brand-ink); padding-top: 0; }
+.site-footer .wordmark__sub { color: var(--glow); }
+.footer__grid { display: grid; gap: var(--space-6); }
+.footer__tag { margin-top: var(--space-2); color: #CDBDAE; }
+.site-footer h2 { font: 600 var(--step--1)/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase; color: var(--glow); margin-bottom: var(--space-3); }
+.footer__list { list-style: none; margin: 0; padding: 0; }
+.footer__list a, .footer__phone {
+  display: inline-flex; align-items: center; gap: var(--space-2); min-height: 44px;
+  text-decoration: none; color: var(--brand-ink);
+}
+.footer__list a:hover, .footer__phone:hover { text-decoration: underline; text-underline-offset: 4px; }
+.footer__base {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-3);
+  margin-top: var(--space-7); padding-top: var(--space-5); border-top: 1px solid rgb(233 221 208 / .18);
+  font-size: var(--step--1); color: #CDBDAE;
+}
+@media (min-width: 768px) { .footer__grid { grid-template-columns: 1.4fr 1fr 1fr; } }
+
+/* ---------- Mobile action bar ---------- */
+.actionbar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  background: var(--bg); border-top: 1px solid var(--line);
+  padding-bottom: env(safe-area-inset-bottom);
+  box-shadow: 0 -8px 24px -12px rgb(43 30 24 / .25);
+}
+.actionbar a {
+  display: flex; align-items: center; justify-content: center; gap: var(--space-2);
+  min-height: 60px; text-decoration: none; font-weight: 600; font-size: .95rem; color: var(--ink);
+}
+.actionbar a + a { border-left: 1px solid var(--line); }
+.actionbar a.is-primary { background: var(--brand); color: var(--brand-ink); }
+@media (min-width: 768px) { .actionbar { display: none; } }
+
+/* ---------- Reveal ---------- */
+.reveal { transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.js .reveal:not(.in) { opacity: 0; transform: translateY(18px); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .reveal:not(.in) { opacity: 1; transform: none; }
+}
+</style>
+<!--sf:preview--><meta name="robots" content="noindex, nofollow"><!--/sf:preview-->
+<!--sf:og--><meta property="og:image" content="https://coco-massage-fribourg.aymenjallouli.dev/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:url" content="https://coco-massage-fribourg.aymenjallouli.dev/"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://coco-massage-fribourg.aymenjallouli.dev/og.jpg"><!--/sf:og-->
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-sms" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><path d="M3 11 21 3l-8 18-2-8z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.4l-5.8 3 1.1-6.4-4.7-4.6 6.5-.9z"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-cash" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 9.5h.01M18 14.5h.01"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-zoom" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></symbol>
+</svg>
+
+<header class="site-header" id="haut">
+  <div class="wrap header__bar">
+    <a class="wordmark" href="#haut" aria-label="COCO Massage, retour en haut de page">
+      <span class="wordmark__coco">COCO</span><span class="wordmark__sub">massage</span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#avis">Avis</a>
+      <a href="#soins">Soins</a>
+      <a href="#lieu">Le lieu</a>
+      <a href="#horaires">Horaires &amp; accès</a>
+    </nav>
+    <a class="btn btn--brand header__call" href="tel:+41796483539">
+      <svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>079&nbsp;648&nbsp;35&nbsp;39
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu">
+      <span class="menu-btn__lines" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <nav aria-label="Menu mobile">
+    <ul class="menu__links">
+      <li><a href="#avis">Avis <span>01</span></a></li>
+      <li><a href="#soins">Soins <span>02</span></a></li>
+      <li><a href="#lieu">Le lieu <span>03</span></a></li>
+      <li><a href="#horaires">Horaires &amp; accès <span>04</span></a></li>
+      <li><a href="#rendez-vous">Rendez-vous <span>05</span></a></li>
+    </ul>
+  </nav>
+  <p class="status js-status" hidden><span class="status__dot" aria-hidden="true"></span><span class="status__txt"></span></p>
+  <div class="menu__actions">
+    <a class="btn btn--brand" href="tel:+41796483539"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Appeler le 079&nbsp;648&nbsp;35&nbsp;39</a>
+    <a class="btn btn--ghost" href="sms:+41796483539?&amp;body=Bonjour%2C%20je%20souhaiterais%20prendre%20rendez-vous%20pour%20un%20massage.%20Quelles%20seraient%20vos%20disponibilit%C3%A9s%20%3F%20Merci."><svg class="ico" aria-hidden="true"><use href="#i-sms"/></svg>Écrire un SMS</a>
+  </div>
+</div>
+
+<main id="contenu">
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="titre">
+    <div class="wrap hero__grid">
+      <div class="hero__text">
+        <p class="eyebrow">COCO Massage · Fribourg</p>
+        <h1 id="titre">Coco écoute d’abord. <em>Le massage suit.</em></h1>
+        <p class="hero__lede">Massage classique, énergétique ou combiné, Route des Cliniques. Douce ou ferme, la pression se règle avec vous.</p>
+        <a class="chip" href="https://www.google.com/maps/place/?q=place_id:ChIJOVurehdpjkcRhH8O_a4ZVtM" target="_blank" rel="noopener">
+          <span class="stars" aria-hidden="true">
+            <svg class="ico ico--fill"><use href="#i-star"/></svg><svg class="ico ico--fill"><use href="#i-star"/></svg><svg class="ico ico--fill"><use href="#i-star"/></svg><svg class="ico ico--fill"><use href="#i-star"/></svg><svg class="ico ico--fill"><use href="#i-star"/></svg>
+          </span>
+          <span><strong>5,0</strong> · 40 avis Google</span>
+        </a>
+        <div class="hero__cta">
+          <a class="btn btn--brand" href="tel:+41796483539"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Appeler</a>
+          <a class="btn btn--ghost" href="sms:+41796483539?&amp;body=Bonjour%2C%20je%20souhaiterais%20prendre%20rendez-vous%20pour%20un%20massage.%20Quelles%20seraient%20vos%20disponibilit%C3%A9s%20%3F%20Merci."><svg class="ico" aria-hidden="true"><use href="#i-sms"/></svg>Écrire un SMS</a>
+        </div>
+        <p class="status js-status" hidden><span class="status__dot" aria-hidden="true"></span><span class="status__txt"></span></p>
+      </div>
+      <figure class="hero__media">
+        <div class="arch">
+          <img src="assets/photos/photo-01.jpg" width="1600" height="1068" fetchpriority="high" decoding="async"
+               alt="La salle de massage aux bougies, vue à travers un voilage : table, serviettes roulées, lavande séchée">
+        </div>
+        <figcaption>La salle, au rez-de-chaussée.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Avis -->
+  <section class="section section--sand" id="avis" aria-labelledby="avis-titre">
+    <div class="wrap">
+      <div class="avis__grid">
+        <div class="score reveal">
+          <p class="score__num" aria-hidden="true">5,0</p>
+          <span class="stars" role="img" aria-label="Note de 5 sur 5">
+            <svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg>
+          </span>
+          <p class="score__label">Note moyenne de 5,0 sur <strong data-count="40">40</strong> avis Google</p>
+          <a class="link-arrow" href="https://www.google.com/maps/place/?q=place_id:ChIJOVurehdpjkcRhH8O_a4ZVtM" target="_blank" rel="noopener">Voir les 40 avis sur Google<svg class="ico" aria-hidden="true"><use href="#i-ext"/></svg></a>
+        </div>
+        <div class="avis__intro reveal">
+          <p class="eyebrow">Avis Google</p>
+          <h2 id="avis-titre">On en ressort léger.</h2>
+          <p class="section__lede">Les clients le répètent, avec leurs mots&nbsp;: à l’écoute, personnalisé, une belle énergie. Et cette sensation en sortant.</p>
+        </div>
+        <figure class="featured reveal">
+          <blockquote>
+            <p>«&nbsp;Elle a ce don de ressentir où ton corps garde ses tensions sans même que tu aies à parler.&nbsp;»</p>
+          </blockquote>
+          <figcaption>
+            <strong>Gilles S.</strong><span>juillet 2025</span>
+            <span class="stars" role="img" aria-label="5 étoiles sur 5"><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg></span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="rail-wrap">
+        <h3 class="sr-only">Avis de clients</h3>
+        <ul class="rail" id="rail" aria-label="Avis Google, faire défiler horizontalement" tabindex="0">
+          <li><figure class="card">
+            <span class="stars" role="img" aria-label="5 étoiles sur 5"><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg></span>
+            <blockquote><p>«&nbsp;J’avais très mal à la hanche à cause du sport, j’étais très tendu en raison du stress. J’en suis ressorti relâché avec la douleur à la hanche vraiment diminuée. C’était parfait ! Elle prend son temps et elle veut vraiment bien faire. Je recommande vraiment.&nbsp;»</p></blockquote>
+            <figcaption><strong>Chris B.</strong><span>juin 2026</span></figcaption>
+          </figure></li>
+          <li><figure class="card">
+            <span class="stars" role="img" aria-label="5 étoiles sur 5"><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg></span>
+            <blockquote><p>«&nbsp;…Elle prend vraiment le temps d’écouter les besoins, chaque massage est personnalisé, et elle met une belle énergie et beaucoup de force quand il le faut. On ressort détendu, léger et ressourcé…&nbsp;»</p></blockquote>
+            <figcaption><strong>Alix S.</strong><span>juillet 2025</span></figcaption>
+          </figure></li>
+          <li><figure class="card">
+            <span class="stars" role="img" aria-label="5 étoiles sur 5"><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg></span>
+            <blockquote><p>«&nbsp;…La nouvelle salle est tout simplement sublime : dès l’entrée, on se sent enveloppé par une ambiance chaleureuse et apaisante […] Un immense merci à Ludovic pour ce moment hors du temps, on en ressort profondément détendu et ressourcé.&nbsp;»</p></blockquote>
+            <figcaption><strong>Josephine P.</strong><span>avril 2026</span></figcaption>
+          </figure></li>
+          <li><figure class="card">
+            <span class="stars" role="img" aria-label="5 étoiles sur 5"><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg></span>
+            <blockquote><p>«&nbsp;…Coco est très gentille, douce et à l’écoute. Elle m’avait fait un massage combiné normal/énergétique. […] Le masseur Ludo m’avait aussi massée une autre fois. […] Il masse merveilleusement bien, j’avais demandé une intensité plus forte et c’était parfait.&nbsp;»</p></blockquote>
+            <figcaption><strong>Aléna P.</strong><span>avril 2026</span></figcaption>
+          </figure></li>
+          <li><figure class="card">
+            <span class="stars" role="img" aria-label="5 étoiles sur 5"><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg></span>
+            <blockquote><p>«&nbsp;C’était un massage très agréable et relaxant. Corinne est douce et attentionnée, elle apporte une touche très personnelle et on s’y sent comme chez soi. Un accueil très chaleureux…&nbsp;»</p></blockquote>
+            <figcaption><strong>Aline S.</strong><span>juillet 2025</span></figcaption>
+          </figure></li>
+          <li><figure class="card">
+            <span class="stars" role="img" aria-label="5 étoiles sur 5"><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg></span>
+            <blockquote><p>«&nbsp;…Très à l’écoute et soin personnalisé selon les besoins de la personne. Massage professionnel et adapté. Le soin énergétique était doux et apaisant…&nbsp;»</p></blockquote>
+            <figcaption><strong>Rute S.</strong><span>mai 2026</span></figcaption>
+          </figure></li>
+          <li><figure class="card">
+            <span class="stars" role="img" aria-label="5 étoiles sur 5"><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg><svg class="ico ico--fill" aria-hidden="true"><use href="#i-star"/></svg></span>
+            <blockquote><p>«&nbsp;Un soin tellement ‘intentionné’ et rempli de présence et de bienveillance […] Un moment cocooning, exactement ce que je recherchais…&nbsp;»</p></blockquote>
+            <figcaption><strong>Cindy</strong><span>avril 2026</span></figcaption>
+          </figure></li>
+        </ul>
+        <div class="rail__foot">
+          <p class="rail__hint">Faites glisser pour lire la suite</p>
+          <div class="rail__nav">
+            <button type="button" data-rail="-1" aria-controls="rail" aria-label="Avis précédent"><svg class="ico" aria-hidden="true"><use href="#i-left"/></svg></button>
+            <button type="button" data-rail="1" aria-controls="rail" aria-label="Avis suivant"><svg class="ico" aria-hidden="true"><use href="#i-right"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Soins -->
+  <section class="section" id="soins" aria-labelledby="soins-titre">
+    <div class="wrap">
+      <div class="soins__head">
+        <div class="reveal">
+          <p class="eyebrow">Les soins</p>
+          <h2 id="soins-titre">Pas un massage «&nbsp;catalogue&nbsp;».</h2>
+        </div>
+        <p class="section__lede reveal">Le mot vient d’un client, Gilles. Avant de commencer, on vous écoute&nbsp;: où ça tire, ce qui vous pèse, la pression qui vous convient. Le soin part de là.</p>
+      </div>
+
+      <ol class="services">
+        <li class="service reveal">
+          <span class="service__num" aria-hidden="true">01</span>
+          <h3>Massage bien-être</h3>
+          <p>Le massage classique, pour relâcher le corps et faire retomber le stress. Douce ou ferme&nbsp;: la pression se règle avec vous.</p>
+          <p class="service__quote">«&nbsp;…un massage très agréable et relaxant.&nbsp;» <span>— Aline S.</span></p>
+        </li>
+        <li class="service reveal">
+          <span class="service__num" aria-hidden="true">02</span>
+          <h3>Massage énergétique</h3>
+          <p>Un soin tout en douceur, centré sur l’énergie, pour quand la tête a besoin de se poser autant que le dos.</p>
+          <p class="service__quote">«&nbsp;Le soin énergétique était doux et apaisant.&nbsp;» <span>— Rute S.</span></p>
+        </li>
+        <li class="service reveal">
+          <span class="service__num" aria-hidden="true">03</span>
+          <h3>Massage combiné</h3>
+          <p>Classique et énergétique dans la même séance, pour ne pas avoir à choisir.</p>
+          <p class="service__quote">«&nbsp;…un massage combiné normal/énergétique. Ça m’avait vraiment fait du bien…&nbsp;» <span>— Aléna P.</span></p>
+        </li>
+      </ol>
+      <p class="services__note">Durées et tarifs&nbsp;: un appel au <a href="tel:+41796483539">079&nbsp;648&nbsp;35&nbsp;39</a> suffit.</p>
+
+      <div class="team">
+        <figure class="team__photo reveal">
+          <img src="assets/photos/photo-08.jpg" width="1024" height="1536" loading="lazy" decoding="async"
+               alt="Une masseuse du cabinet pendant un massage du dos, les mains jointes sur l’omoplate">
+        </figure>
+        <div class="team__text reveal">
+          <p class="eyebrow">Qui vous masse</p>
+          <h3>Coco, <em>et Ludovic.</em></h3>
+          <p>Coco a donné son nom au cabinet. Dans les avis, on la dit <q>douce et à l’écoute</q>, capable aussi de mettre <q>beaucoup de force quand il le faut</q>.</p>
+          <p>Ludovic masse ici lui aussi. Aléna le décrit <q>bienveillant et chaleureux</q>&nbsp;; Josephine le remercie pour <q>ce moment hors du temps</q>.</p>
+          <a class="btn btn--brand" href="#rendez-vous">Prendre rendez-vous</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Le lieu -->
+  <section class="section section--flush" id="lieu" aria-labelledby="lieu-titre">
+    <div class="wrap">
+      <div class="lieu__head">
+        <div class="reveal">
+          <p class="eyebrow">Le lieu</p>
+          <h2 id="lieu-titre">«&nbsp;On s’y sent comme chez soi.&nbsp;» <span>— Aline S., avis Google</span></h2>
+        </div>
+        <p class="section__lede reveal">Bois clair, rideau de macramé, plantes vertes et bougies allumées. Le cabinet est au rez-de-chaussée, Route des Cliniques&nbsp;26.</p>
+      </div>
+      <div class="gallery">
+        <button class="g-item g1 reveal" type="button" data-caption="La table, les serviettes roulées, la lampe allumée">
+          <img src="assets/photos/photo-04.jpg" width="1068" height="1600" loading="lazy" decoding="async" alt="Table de massage avec serviettes roulées devant une étagère éclairée et un rideau de macramé">
+          <span class="g-item__zoom" aria-hidden="true"><svg class="ico"><use href="#i-zoom"/></svg></span>
+        </button>
+        <button class="g-item g2 reveal" type="button" data-caption="Le rideau de macramé délimite l’espace de soin">
+          <img src="assets/photos/photo-05.jpg" width="1600" height="950" loading="lazy" decoding="async" alt="Grande pièce au parquet clair, herbes de la pampa et rideau de macramé devant l’espace de massage">
+          <span class="g-item__zoom" aria-hidden="true"><svg class="ico"><use href="#i-zoom"/></svg></span>
+        </button>
+        <button class="g-item g3 reveal" type="button" data-caption="La table de massage">
+          <img src="assets/photos/photo-09.jpg" width="1600" height="1068" loading="lazy" decoding="async" alt="Table de massage en bois clair, linge beige et serviettes, posée sur un tapis graphique">
+          <span class="g-item__zoom" aria-hidden="true"><svg class="ico"><use href="#i-zoom"/></svg></span>
+        </button>
+        <button class="g-item g4 reveal" type="button" data-caption="Herbes de la pampa et lumière de bougie">
+          <img src="assets/photos/photo-10.jpg" width="1600" height="1068" loading="lazy" decoding="async" alt="Herbes de la pampa séchées au premier plan, bougies floues à l’arrière-plan">
+          <span class="g-item__zoom" aria-hidden="true"><svg class="ico"><use href="#i-zoom"/></svg></span>
+        </button>
+        <button class="g-item g5 reveal" type="button" data-caption="Le coin salon">
+          <img src="assets/photos/photo-03.jpg" width="1600" height="1068" loading="lazy" decoding="async" alt="Deux fauteuils bouclette autour d’une table ronde en bois, plantes vertes et tasses">
+          <span class="g-item__zoom" aria-hidden="true"><svg class="ico"><use href="#i-zoom"/></svg></span>
+        </button>
+        <button class="g-item g6 reveal" type="button" data-caption="«&nbsp;Belle journée&nbsp;»">
+          <img src="assets/photos/photo-07.jpg" width="978" height="1600" loading="lazy" decoding="async" alt="Fauteuil bouclette, grand ficus lyrata et deux tasses sur une table basse en bois">
+          <span class="g-item__zoom" aria-hidden="true"><svg class="ico"><use href="#i-zoom"/></svg></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Horaires & accès -->
+  <section class="section section--sand" id="horaires" aria-labelledby="horaires-titre">
+    <div class="wrap visit">
+      <div class="visit__info">
+        <p class="eyebrow">Horaires &amp; accès</p>
+        <h2 id="horaires-titre">Route des Cliniques&nbsp;26, <em>rez-de-chaussée.</em></h2>
+        <p class="visit__city">1700 Fribourg</p>
+
+        <div class="hours">
+          <div class="hours__head">
+            <h3>Horaires</h3>
+            <p class="status js-status" hidden><span class="status__dot" aria-hidden="true"></span><span class="status__txt"></span></p>
+          </div>
+          <table id="hours-table">
+            <caption class="sr-only">Heures d’ouverture de COCO Massage</caption>
+            <tbody>
+              <tr data-day="lundi" data-h="09:00–17:00"><th scope="row">Lundi</th><td>9h – 17h</td></tr>
+              <tr data-day="mardi" data-h="09:30–20:30"><th scope="row">Mardi</th><td>9h30 – 20h30</td></tr>
+              <tr data-day="mercredi" data-h="09:30–20:30"><th scope="row">Mercredi</th><td>9h30 – 20h30</td></tr>
+              <tr data-day="jeudi" data-h="08:00–20:30"><th scope="row">Jeudi</th><td>8h – 20h30</td></tr>
+              <tr data-day="vendredi" data-h="08:00–20:30"><th scope="row">Vendredi</th><td>8h – 20h30</td></tr>
+              <tr data-day="samedi" data-h="09:00–15:00"><th scope="row">Samedi</th><td>9h – 15h</td></tr>
+              <tr data-day="dimanche" data-h="Fermé" class="is-closed"><th scope="row">Dimanche</th><td>Fermé</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <ul class="facts">
+          <li><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg>Rendez-vous recommandés</li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-cash"/></svg>Paiement en espèces uniquement</li>
+        </ul>
+
+        <div class="visit__cta">
+          <a class="btn btn--brand" href="https://www.google.com/maps/dir/?api=1&amp;destination=COCO%20Massage%2C%20Route%20cliniques%2C%20rez%20de%20chauss%C3%A9e%2026%2C%201700%20Fribourg" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-route"/></svg>Itinéraire</a>
+          <a class="btn btn--ghost" href="tel:+41796483539"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Appeler</a>
+        </div>
+      </div>
+
+      <div class="visit__map reveal">
+        <div class="map">
+          <div class="map__ph" aria-hidden="true">
+            <svg class="ico" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Route des Cliniques 26<br>1700 Fribourg</span>
+          </div>
+          <iframe src="https://www.google.com/maps?q=COCO%20Massage%2C%20Route%20cliniques%2C%20rez%20de%20chauss%C3%A9e%2026%2C%201700%20Fribourg&amp;output=embed"
+                  title="Carte : COCO Massage, Route des Cliniques 26, Fribourg" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+        <div class="entrance">
+          <figure class="entrance__img">
+            <img src="assets/photos/photo-06.jpg" width="1006" height="1420" loading="lazy" decoding="async" alt="Façade claire aux volets verts, porte d’entrée en arc encadrée de fleurs, magnolia en fleur">
+          </figure>
+          <div>
+            <p class="entrance__cap">L’entrée, au rez-de-chaussée.</p>
+            <a class="link-arrow" href="https://www.google.com/maps/place/?q=place_id:ChIJOVurehdpjkcRhH8O_a4ZVtM" target="_blank" rel="noopener">Ouvrir dans Google Maps<svg class="ico" aria-hidden="true"><use href="#i-ext"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rendez-vous -->
+  <section class="section book" id="rendez-vous" aria-labelledby="rdv-titre">
+    <div class="wrap book__grid">
+      <div class="reveal">
+        <p class="eyebrow">Rendez-vous</p>
+        <h2 id="rdv-titre">Réservez par téléphone, <em>ou par SMS.</em></h2>
+        <p class="book__text">Dites-nous le soin qui vous tente et vos disponibilités. Si l’appel tombe pendant un massage, un SMS fera très bien l’affaire.</p>
+      </div>
+      <div class="reveal">
+        <a class="book__phone" href="tel:+41796483539" aria-label="Appeler le 079 648 35 39">079&nbsp;648&nbsp;35&nbsp;39</a>
+        <div class="book__btns">
+          <a class="btn btn--light" href="tel:+41796483539"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Appeler</a>
+          <a class="btn btn--outline-light" href="sms:+41796483539?&amp;body=Bonjour%2C%20je%20souhaiterais%20prendre%20rendez-vous%20pour%20un%20massage.%20Quelles%20seraient%20vos%20disponibilit%C3%A9s%20%3F%20Merci."><svg class="ico" aria-hidden="true"><use href="#i-sms"/></svg>Envoyer un SMS</a>
+        </div>
+        <div class="book__note">
+          <p><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg>Rendez-vous recommandés</p>
+          <p><svg class="ico" aria-hidden="true"><use href="#i-cash"/></svg>Paiement en espèces uniquement</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer__grid">
+    <div>
+      <a class="wordmark" href="#haut" aria-label="COCO Massage, retour en haut de page"><span class="wordmark__coco">COCO</span><span class="wordmark__sub">massage</span></a>
+      <p class="footer__tag">Massages bien-être à Fribourg.</p>
+    </div>
+    <div>
+      <h2>Adresse</h2>
+      <address>
+        Route des Cliniques 26, rez-de-chaussée<br>1700 Fribourg<br>
+        <a class="footer__phone" href="tel:+41796483539">079&nbsp;648&nbsp;35&nbsp;39</a>
+      </address>
+    </div>
+    <nav aria-label="Liens du pied de page">
+      <h2>Raccourcis</h2>
+      <ul class="footer__list">
+        <li><a href="#horaires">Horaires &amp; accès</a></li>
+        <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=COCO%20Massage%2C%20Route%20cliniques%2C%20rez%20de%20chauss%C3%A9e%2026%2C%201700%20Fribourg" target="_blank" rel="noopener">Itinéraire<svg class="ico" aria-hidden="true"><use href="#i-ext"/></svg></a></li>
+        <li><a href="https://www.google.com/maps/place/?q=place_id:ChIJOVurehdpjkcRhH8O_a4ZVtM" target="_blank" rel="noopener">Avis Google<svg class="ico" aria-hidden="true"><use href="#i-ext"/></svg></a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap footer__base">
+    <p>© <span id="annee"></span> COCO Massage</p>
+    <p>Fribourg, Suisse</p>
+  </div>
+</footer>
+
+<nav class="actionbar" aria-label="Actions rapides">
+  <a class="is-primary" href="tel:+41796483539"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Appeler</a>
+  <a href="sms:+41796483539?&amp;body=Bonjour%2C%20je%20souhaiterais%20prendre%20rendez-vous%20pour%20un%20massage.%20Quelles%20seraient%20vos%20disponibilit%C3%A9s%20%3F%20Merci."><svg class="ico" aria-hidden="true"><use href="#i-sms"/></svg>SMS</a>
+  <a href="https://www.google.com/maps/dir/?api=1&amp;destination=COCO%20Massage%2C%20Route%20cliniques%2C%20rez%20de%20chauss%C3%A9e%2026%2C%201700%20Fribourg" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-route"/></svg>Itinéraire</a>
+</nav>
+
+<dialog class="lightbox" id="lightbox" aria-label="Photos du cabinet">
+  <figure>
+    <img alt="">
+    <figcaption></figcaption>
+  </figure>
+  <button class="lb-btn lb-close" type="button" data-lb="close" aria-label="Fermer"><svg class="ico" aria-hidden="true"><use href="#i-close"/></svg></button>
+  <button class="lb-btn lb-prev" type="button" data-lb="-1" aria-label="Photo précédente"><svg class="ico" aria-hidden="true"><use href="#i-left"/></svg></button>
+  <button class="lb-btn lb-next" type="button" data-lb="1" aria-label="Photo suivante"><svg class="ico" aria-hidden="true"><use href="#i-right"/></svg></button>
+</dialog>
+
+<script>
+(() => {
+  const d = document, root = d.documentElement;
+  root.classList.add('js');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasIO = 'IntersectionObserver' in window;
+
+  // Année du copyright
+  const year = d.getElementById('annee');
+  if (year) year.textContent = new Date().getFullYear();
+
+  // Menu mobile : aria-expanded, Échap, liens qui ferment, scroll bloqué
+  const btn = d.querySelector('.menu-btn'), menu = d.getElementById('menu');
+  const setMenu = (open) => {
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    menu.classList.toggle('is-open', open);
+    root.classList.toggle('lock', open);
+    if (open) setTimeout(() => menu.querySelector('a').focus({ preventScroll: true }), 50);
+  };
+  btn.addEventListener('click', () => setMenu(btn.getAttribute('aria-expanded') !== 'true'));
+  menu.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
+  d.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') { setMenu(false); btn.focus(); }
+  });
+  matchMedia('(min-width: 960px)').addEventListener('change', (m) => { if (m.matches) setMenu(false); });
+
+  // Horaires : jour en cours + statut en direct, à l'heure de Fribourg
+  const DAYS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+  const hours = {};
+  d.querySelectorAll('#hours-table [data-day]').forEach((tr) => { hours[tr.dataset.day] = tr.dataset.h; });
+  const ranges = (s) => {
+    if (!s || /ferm/i.test(s)) return [];
+    if (/24\s*h/i.test(s)) return [[0, 1440]];
+    return s.split(/[,;]/).map((p) => {
+      const m = p.match(/(\d{1,2})(?:[:h.](\d{2}))?\s*[–—-]\s*(\d{1,2})(?:[:h.](\d{2}))?/);
+      if (!m) return null;
+      const a = +m[1] * 60 + (+m[2] || 0);
+      let b = +m[3] * 60 + (+m[4] || 0);
+      if (b <= a) b += 1440; // plage qui passe minuit
+      return [a, b];
+    }).filter(Boolean);
+  };
+  const fmt = (m) => {
+    m = ((m % 1440) + 1440) % 1440;
+    const h = Math.floor(m / 60), mm = m % 60;
+    return h + 'h' + (mm ? String(mm).padStart(2, '0') : '');
+  };
+  let today, mins;
+  try {
+    const p = {};
+    new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Zurich', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
+      .formatToParts(new Date()).forEach((x) => { p[x.type] = x.value; });
+    today = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(p.weekday);
+    mins = (+p.hour % 24) * 60 + +p.minute;
+  } catch (e) { today = -1; }
+  if (today < 0) { const n = new Date(); today = n.getDay(); mins = n.getHours() * 60 + n.getMinutes(); }
+
+  const slots = [];
+  for (let k = -1; k <= 7; k++) {
+    ranges(hours[DAYS[(today + k + 7) % 7]]).forEach(([a, b]) => slots.push([k * 1440 + a, k * 1440 + b]));
+  }
+  let state = 'closed', text = 'Fermé';
+  const cur = slots.find(([a, b]) => mins >= a && mins < b);
+  if (cur) {
+    let end = cur[1], next;
+    while ((next = slots.find(([a, b]) => a <= end && b > end))) end = next[1];
+    const left = end - mins;
+    if (left > 2880) { state = 'open'; text = 'Ouvert 24h/24'; }
+    else {
+      state = left <= 60 ? 'soon' : 'open';
+      const at = end % 1440 === 0 ? 'minuit' : fmt(end);
+      text = left <= 60 ? 'Ferme bientôt · à ' + at : 'Ouvert maintenant · jusqu’à ' + at;
+    }
+  } else {
+    const nx = slots.filter(([a]) => a > mins).sort((x, y) => x[0] - y[0])[0];
+    if (nx) {
+      const k = Math.floor(nx[0] / 1440);
+      const when = k === 0 ? '' : k === 1 ? 'demain ' : DAYS[(today + k) % 7] + ' ';
+      text = 'Fermé · ouvre ' + when + 'à ' + fmt(nx[0]);
+    }
+  }
+  const row = d.querySelector('#hours-table [data-day="' + DAYS[today] + '"]');
+  if (row) {
+    row.classList.add('is-today');
+    row.setAttribute('aria-current', 'date');
+    const tag = d.createElement('span');
+    tag.className = 'today-tag'; tag.textContent = 'Aujourd’hui';
+    row.querySelector('th').append(tag);
+  }
+  d.querySelectorAll('.js-status').forEach((el) => {
+    el.dataset.state = state;
+    el.querySelector('.status__txt').textContent = text;
+    el.hidden = false;
+  });
+
+  // Apparitions au défilement + compteur d'avis
+  const reveals = d.querySelectorAll('.reveal');
+  if (hasIO && !reduce) {
+    const ro = new IntersectionObserver((es) => es.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach((el) => ro.observe(el));
+
+    const co = new IntersectionObserver((es) => es.forEach((e) => {
+      if (!e.isIntersecting) return;
+      co.unobserve(e.target);
+      const el = e.target, to = +el.dataset.count, t0 = performance.now();
+      const tick = (t) => {
+        const k = Math.min(1, (t - t0) / 1200);
+        el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3)));
+        if (k < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }), { threshold: 0.8 });
+    d.querySelectorAll('[data-count]').forEach((el) => co.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add('in'));
+  }
+
+  // Carrousel d'avis
+  const rail = d.getElementById('rail');
+  d.querySelectorAll('[data-rail]').forEach((b) => b.addEventListener('click', () => {
+    const card = rail.querySelector('li');
+    rail.scrollBy({ left: (card.getBoundingClientRect().width + 16) * +b.dataset.rail, behavior: reduce ? 'auto' : 'smooth' });
+  }));
+
+  // Galerie : lightbox <dialog>, flèches du clavier, Échap natif
+  const dlg = d.getElementById('lightbox');
+  if (dlg && typeof dlg.showModal === 'function') {
+    const items = [...d.querySelectorAll('.g-item')];
+    const img = dlg.querySelector('img'), cap = dlg.querySelector('figcaption');
+    let i = 0;
+    const show = (n) => {
+      i = (n + items.length) % items.length;
+      const src = items[i].querySelector('img');
+      img.src = src.getAttribute('src');
+      img.alt = src.alt;
+      cap.textContent = items[i].dataset.caption;
+    };
+    items.forEach((b, n) => b.addEventListener('click', () => { show(n); dlg.showModal(); root.classList.add('lock'); }));
+    dlg.addEventListener('close', () => { root.classList.remove('lock'); items[i].focus(); });
+    dlg.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-lb]');
+      if (b) { if (b.dataset.lb === 'close') dlg.close(); else show(i + +b.dataset.lb); }
+      else if (!e.target.closest('img')) dlg.close();
+    });
+    dlg.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') show(i + 1);
+      if (e.key === 'ArrowLeft') show(i - 1);
+    });
+  }
+})();
+</script>
+<!--sf:preview--><div style="padding:18px 16px;font:13px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;text-align:center;background:#0f0f10;color:#a3a3a8">Aperçu réalisé par Aymen Jallouli pour COCO Massage : ce site n'est pas encore le site officiel de l'établissement.</div><!--/sf:preview-->
+<!--sf:track--><script>(function(){try{var q=new URLSearchParams(location.search),r=q.get('r')||sessionStorage.getItem('sf_r');if(!r)return;sessionStorage.setItem('sf_r',r);navigator.sendBeacon("https://track.aymenjallouli.dev/t"+'?r='+encodeURIComponent(r)+'&p='+encodeURIComponent(location.pathname));}catch(e){}})();</script><!--/sf:track-->
+</body>
+</html>
